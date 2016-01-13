@@ -25,7 +25,7 @@ class SettingsSectionsProvider implements ContributorInterface
                 'pie-chart',
                 array(
                     'activationParams' => array(
-                        'category' => 'analytics',
+                        'category' => 'google-analytics',
                     ),
                 )
             ),

@@ -27,7 +27,7 @@ class SettingsSectionsProviderTest extends \PHPUnit_Framework_TestCase
 
         $expectedMeta = array(
             'activationParams' => array(
-                'category' => 'analytics',
+                'category' => 'google-analytics',
             ),
         );
         $this->assertEquals($expectedMeta, $items[0]->getMeta());
