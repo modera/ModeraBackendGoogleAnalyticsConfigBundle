@@ -8,6 +8,8 @@
         <service id="modera_backend_google_analytics_config.contributions.settings_sections_provider"
                  class="Modera\BackendGoogleAnalyticsConfigBundle\Contributions\SettingsSectionsProvider">
 
+            <argument type="service" id="security.authorization_checker" />
+
             <tag name="modera_backend_tools_settings.contributions.sections_provider" />
         </service>
 

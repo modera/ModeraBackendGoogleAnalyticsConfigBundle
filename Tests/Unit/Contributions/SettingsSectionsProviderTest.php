@@ -4,6 +4,9 @@ namespace Modera\BackendGoogleAnalyticsConfigBundle\Tests\Unit\Contributions;
 
 use Modera\BackendGoogleAnalyticsConfigBundle\Contributions\SettingsSectionsProvider;
 use Modera\BackendToolsSettingsBundle\Section\StandardSection;
+use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
+use Modera\BackendConfigUtilsBundle\ModeraBackendConfigUtilsBundle;
+use Modera\MJRSecurityIntegrationBundle\ModeraMJRSecurityIntegrationBundle;
 
 /**
  * @author    Sergei Lissovski <sergei.lissovski@modera.org>
@@ -13,7 +16,11 @@ class SettingsSectionsProviderTest extends \PHPUnit_Framework_TestCase
 {
     public function testGetItems()
     {
-        $provider = new SettingsSectionsProvider();
+        $authorizationChecker = \Phake::mock(AuthorizationCheckerInterface::class);
+        \Phake::when($authorizationChecker)
+            ->isGranted(ModeraBackendConfigUtilsBundle::ROLE_ACCESS_BACKEND_SYSTEM_SETTINGS, $this->anything())
+            ->thenReturn(true);
+        $provider = new SettingsSectionsProvider($authorizationChecker);
 
         /* @var StandardSection[] $items */
         $items = $provider->getItems();
@@ -31,5 +38,20 @@ class SettingsSectionsProviderTest extends \PHPUnit_Framework_TestCase
             ),
         );
         $this->assertEquals($expectedMeta, $items[0]->getMeta());
+    }
+
+    public function testGetItemsWithoutAccess()
+    {
+        $authorizationChecker = \Phake::mock(AuthorizationCheckerInterface::class);
+        \Phake::when($authorizationChecker)
+            ->isGranted(ModeraMJRSecurityIntegrationBundle::ROLE_BACKEND_USER, $this->anything())
+            ->thenReturn(true);
+        $provider = new SettingsSectionsProvider($authorizationChecker);
+
+        /* @var StandardSection[] $items */
+        $items = $provider->getItems();
+
+        $this->assertTrue(is_array($items));
+        $this->assertEquals(0, count($items));
     }
 }
