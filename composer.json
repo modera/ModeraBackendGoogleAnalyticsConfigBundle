@@ -12,14 +12,16 @@
     ],
     "require": {
         "php": ">=5.6",
-        "modera/config-bundle": "~2.0|~3.0",
-        "modera/foundation-bundle": "~2.0|~3.0",
-        "modera/backend-tools-settings-bundle": "~2.0|~3.0",
-        "sergeil/expander-bundle": "~1.0"
+        "modera/config-bundle": "~3.0|~4.0",
+        "modera/mjr-security-integration-bundle": "~3.0|~4.0",
+        "modera/backend-tools-settings-bundle": "~3.0|~4.0",
+        "modera/backend-config-utils-bundle": "~3.0|~4.0",
+        "sergeil/expander-bundle": "^1.0"
     },
     "require-dev": {
-        "phpunit/phpunit": "3.7.*",
-        "phake/phake": "~2.0"
+        "phake/phake": "^2.0",
+        "phpunit/phpunit": "^5.5",
+        "symfony/symfony": "^3.4|^4.0"
     },
     "autoload": {
         "psr-0": { "Modera\\BackendGoogleAnalyticsConfigBundle": "" }
