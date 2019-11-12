@@ -14,34 +14,45 @@ use Modera\BackendConfigUtilsBundle\ModeraBackendConfigUtilsBundle;
  */
 class SettingsSectionsProvider implements ContributorInterface
 {
+    /**
+     * @var array
+     */
     private $items;
 
     /**
-     * SettingsSectionsProvider constructor.
+     * @var AuthorizationCheckerInterface
+     */
+    private $authorizationChecker;
+
+    /**
      * @param AuthorizationCheckerInterface $authorizationChecker
      */
     public function __construct(AuthorizationCheckerInterface $authorizationChecker)
     {
-        $this->items = array();
-        if ($authorizationChecker->isGranted(ModeraBackendConfigUtilsBundle::ROLE_ACCESS_BACKEND_SYSTEM_SETTINGS)) {
-            $this->items[] = new StandardSection(
-                'google-analytics',
-                T::trans('Google analytics'),
-                'Modera.backend.configutils.runtime.SettingsListActivity',
-                'pie-chart',
-                array(
-                    'activationParams' => array(
-                        'category' => 'google-analytics',
-                    ),
-                )
-            );
-        }
+        $this->authorizationChecker = $authorizationChecker;
     }
     /**
      * {@inheritdoc}
      */
     public function getItems()
     {
+        if (!$this->items) {
+            $this->items = array();
+            if ($this->authorizationChecker->isGranted(ModeraBackendConfigUtilsBundle::ROLE_ACCESS_BACKEND_SYSTEM_SETTINGS)) {
+                $this->items[] = new StandardSection(
+                    'google-analytics',
+                    T::trans('Google analytics'),
+                    'Modera.backend.configutils.runtime.SettingsListActivity',
+                    'pie-chart',
+                    array(
+                        'activationParams' => array(
+                            'category' => 'google-analytics',
+                        ),
+                    )
+                );
+            }
+        }
+
         return $this->items;
     }
 }
