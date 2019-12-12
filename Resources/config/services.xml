@@ -18,5 +18,14 @@
 
             <tag name="modera_mjr_integration.class_loader_mappings_provider" />
         </service>
+
+        <service id="modera_backend_google_analytics_config.handling.php_classes_translation_handler"
+                 parent="modera_translations.handling.php_classes_translation_handler">
+
+            <argument>ModeraBackendGoogleAnalyticsConfigBundle</argument>
+
+            <tag name="modera_translations.translation_handler" />
+        </service>
+
     </services>
 </container>
