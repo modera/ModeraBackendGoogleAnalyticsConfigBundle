@@ -1,9 +1,5 @@
 # ModeraBackendGoogleAnalyticsConfigBundle
 
-[![Build Status](https://travis-ci.org/modera/ModeraBackendGoogleAnalyticsConfigBundle.svg?branch=master)](https://travis-ci.org/modera/ModeraBackendGoogleAnalyticsConfigBundle)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/modera/ModeraBackendGoogleAnalyticsConfigBundle/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/modera/ModeraBackendGoogleAnalyticsConfigBundle/?branch=master)
-[![SensioLabsInsight](https://insight.sensiolabs.com/projects/545d2f81-38f7-4936-b231-78fcdce7b400/mini.png)](https://insight.sensiolabs.com/projects/545d2f81-38f7-4936-b231-78fcdce7b400)
-
 Contributes a section to Settings page that allows to configure Google Analytics.
 
 ## Installation
