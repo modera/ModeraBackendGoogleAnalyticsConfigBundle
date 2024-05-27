@@ -9,11 +9,13 @@ Ext.define('Modera.backend.gaconfig.runtime.TrackingCodesSettingsActivity', {
         'Ext.data.Store'
     ],
 
-    getId: function() { // override
+    // override
+    getId: function() {
         return 'ga-analytics-settings';
     },
 
-    doCreateUi: function(params, callback) { // override
+    // override
+    doCreateUi: function(params, callback) {
         var query = {
             filter: [ { property: 'category', value: 'eq:analytics' } ],
             hydration: {
@@ -22,8 +24,6 @@ Ext.define('Modera.backend.gaconfig.runtime.TrackingCodesSettingsActivity', {
         };
 
         Actions.ModeraBackendConfigUtils_Default.list(query, function(r) {
-            console.log(' >>>> ', r.items);
-
             var ui = Ext.create('Modera.backend.gaconfig.view.TrackingCodesSettingsPanel', {
                 store: Ext.create('Ext.data.Store', {
                     fields: [''],
@@ -34,16 +34,6 @@ Ext.define('Modera.backend.gaconfig.runtime.TrackingCodesSettingsActivity', {
                     autoLoad: true
                 })
             });
-
-            console.log(' >>>> ', r.items);
-
-            //Ext.each(r.items, function(item) {
-            //    var cmp = ui.down(Ext.String.format('component[name={0}]', item.name));
-            //    if (cmp) {
-            //        cmp.serverConfig = item;
-            //        cmp.setValue(item.value);
-            //    }
-            //});
 
             callback(ui);
         });

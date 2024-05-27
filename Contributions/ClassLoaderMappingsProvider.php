@@ -10,13 +10,10 @@ use Sli\ExpanderBundle\Ext\ContributorInterface;
  */
 class ClassLoaderMappingsProvider implements ContributorInterface
 {
-    /**
-     * {@inheritdoc}
-     */
-    public function getItems()
+    public function getItems(): array
     {
-        return array(
+        return [
             'Modera.backend.gaconfig' => '/bundles/moderabackendgoogleanalyticsconfig/js',
-        );
+        ];
     }
 }
