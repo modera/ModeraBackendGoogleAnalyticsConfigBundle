@@ -1,5 +1,5 @@
 /**
- * @author Sergei Lissovski <sergei.lissovski@modera.org>
+ * @copyright 2016 Modera Foundation
  */
 Ext.define('Modera.backend.gaconfig.view.TrackingCodesSettingsPanel', {
     extend: 'Ext.grid.Panel',
